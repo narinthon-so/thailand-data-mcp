@@ -2,6 +2,21 @@
   "name": "thailand-data-mcp-server",
   "version": "0.1.0",
   "description": "MCP server for Thailand data: DBD company registry lookup, Thai address normalization, holidays, and VAT/WHT reference",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/narinthon-so/thailand-data-mcp.git"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "thailand",
+    "thai-address",
+    "dbd",
+    "company-registry",
+    "ai-agents"
+  ],
   "type": "module",
   "main": "dist/index.js",
   "bin": {
