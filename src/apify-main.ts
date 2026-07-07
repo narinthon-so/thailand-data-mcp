@@ -16,6 +16,19 @@ import { buildServer, type ChargeFn } from "./server.js";
 
 await Actor.init();
 
+// Apify auto-tests published Actors daily with a default (non-standby) run and
+// expects a non-empty default dataset within minutes. A standby web server
+// would just wait and fail that test — so for platform runs that are NOT
+// standby, emit one informational item and exit successfully instead.
+if (Actor.isAtHome() && Actor.getEnv().metaOrigin !== "STANDBY") {
+  await Actor.pushData({
+    note: "This Actor is an MCP server and runs in Standby mode.",
+    usage:
+      "Connect an MCP client to the standby endpoint (POST /mcp) or via mcp.apify.com. Tools: thai_company_lookup, thai_address_normalize, thai_list_provinces, thai_holidays, thai_vat_reference.",
+  });
+  await Actor.exit("Standby MCP server — nothing to do in a standard run.");
+}
+
 const charge: ChargeFn = async (eventName) => {
   if (!Actor.isAtHome()) {
     log.info(`[local] would charge event: ${eventName}`);
