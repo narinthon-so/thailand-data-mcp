@@ -11,6 +11,10 @@ export interface Holiday {
   /** Lunar-calendar holidays are set by annual announcement; dates here are
    *  the announced/expected ones and should be verified for critical use. */
   lunar: boolean;
+  /** Observed by government offices only — banks and most private employers work. */
+  governmentOnly?: boolean;
+  /** Scope caveats, e.g. holidays limited to Bangkok financial institutions. */
+  note?: string;
 }
 
 export const HOLIDAYS: Record<number, Holiday[]> = {
@@ -24,10 +28,12 @@ export const HOLIDAYS: Record<number, Holiday[]> = {
     { date: "2025-05-01", nameEn: "National Labour Day", nameTh: "วันแรงงานแห่งชาติ", lunar: false },
     { date: "2025-05-05", nameEn: "Coronation Day (substitution)", nameTh: "ชดเชยวันฉัตรมงคล", lunar: false },
     { date: "2025-05-12", nameEn: "Visakha Bucha Day (substitution)", nameTh: "ชดเชยวันวิสาขบูชา", lunar: true },
+    { date: "2025-06-02", nameEn: "Special Holiday (cabinet-declared bridge day)", nameTh: "วันหยุดพิเศษ", lunar: false },
     { date: "2025-06-03", nameEn: "H.M. Queen Suthida's Birthday", nameTh: "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าฯ พระบรมราชินี", lunar: false },
     { date: "2025-07-10", nameEn: "Asahna Bucha Day", nameTh: "วันอาสาฬหบูชา", lunar: true },
-    { date: "2025-07-11", nameEn: "Buddhist Lent Day", nameTh: "วันเข้าพรรษา", lunar: true },
+    { date: "2025-07-11", nameEn: "Buddhist Lent Day", nameTh: "วันเข้าพรรษา", lunar: true, governmentOnly: true },
     { date: "2025-07-28", nameEn: "H.M. King Vajiralongkorn's Birthday", nameTh: "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระเจ้าอยู่หัว", lunar: false },
+    { date: "2025-08-11", nameEn: "Special Holiday (cabinet-declared bridge day)", nameTh: "วันหยุดพิเศษ", lunar: false },
     { date: "2025-08-12", nameEn: "H.M. Queen Sirikit The Queen Mother's Birthday / Mother's Day", nameTh: "วันแม่แห่งชาติ", lunar: false },
     { date: "2025-10-13", nameEn: "H.M. King Bhumibol Memorial Day", nameTh: "วันนวมินทรมหาราช", lunar: false },
     { date: "2025-10-23", nameEn: "King Chulalongkorn Memorial Day", nameTh: "วันปิยมหาราช", lunar: false },
@@ -37,6 +43,7 @@ export const HOLIDAYS: Record<number, Holiday[]> = {
   ],
   2026: [
     { date: "2026-01-01", nameEn: "New Year's Day", nameTh: "วันขึ้นปีใหม่", lunar: false },
+    { date: "2026-01-02", nameEn: "Special Holiday (New Year, cabinet-declared)", nameTh: "วันหยุดพิเศษ", lunar: false },
     { date: "2026-03-03", nameEn: "Makha Bucha Day", nameTh: "วันมาฆบูชา", lunar: true },
     { date: "2026-04-06", nameEn: "Chakri Memorial Day", nameTh: "วันจักรี", lunar: false },
     { date: "2026-04-13", nameEn: "Songkran Festival", nameTh: "วันสงกรานต์", lunar: false },
@@ -48,9 +55,10 @@ export const HOLIDAYS: Record<number, Holiday[]> = {
     { date: "2026-06-03", nameEn: "H.M. Queen Suthida's Birthday", nameTh: "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าฯ พระบรมราชินี", lunar: false },
     { date: "2026-07-28", nameEn: "H.M. King Vajiralongkorn's Birthday", nameTh: "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระเจ้าอยู่หัว", lunar: false },
     { date: "2026-07-29", nameEn: "Asahna Bucha Day", nameTh: "วันอาสาฬหบูชา", lunar: true },
-    { date: "2026-07-30", nameEn: "Buddhist Lent Day", nameTh: "วันเข้าพรรษา", lunar: true },
+    { date: "2026-07-30", nameEn: "Buddhist Lent Day", nameTh: "วันเข้าพรรษา", lunar: true, governmentOnly: true },
     { date: "2026-08-12", nameEn: "H.M. Queen Sirikit The Queen Mother's Birthday / Mother's Day", nameTh: "วันแม่แห่งชาติ", lunar: false },
     { date: "2026-10-13", nameEn: "H.M. King Bhumibol Memorial Day", nameTh: "วันนวมินทรมหาราช", lunar: false },
+    { date: "2026-10-16", nameEn: "Special Holiday (Bangkok financial institutions only)", nameTh: "วันหยุดพิเศษ (สถาบันการเงินในกรุงเทพฯ)", lunar: false, note: "Applies to financial institutions in Bangkok only, per Bank of Thailand announcement." },
     { date: "2026-10-23", nameEn: "King Chulalongkorn Memorial Day", nameTh: "วันปิยมหาราช", lunar: false },
     { date: "2026-12-07", nameEn: "Father's Day (substitution)", nameTh: "ชดเชยวันพ่อแห่งชาติ", lunar: false },
     { date: "2026-12-10", nameEn: "Constitution Day", nameTh: "วันรัฐธรรมนูญ", lunar: false },
