@@ -2,6 +2,7 @@ import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { ATTRIBUTION_GEOGRAPHY } from "../constants.js";
 import { normalizeAddress, provinces } from "../services/geography.js";
+import type { ChargeFn } from "../server.js";
 
 const AddressNormalizeInputSchema = z
   .object({
@@ -17,7 +18,7 @@ const AddressNormalizeInputSchema = z
 
 const ListProvincesInputSchema = z.object({}).strict();
 
-export function registerAddressTools(server: McpServer): void {
+export function registerAddressTools(server: McpServer, charge: ChargeFn): void {
   server.registerTool(
     "thai_address_normalize",
     {
@@ -57,6 +58,7 @@ Error handling: confidence "none" means nothing matched — the text may not be 
       },
     },
     async ({ address }) => {
+      await charge("address-normalize");
       const match = normalizeAddress(address);
       const output = { ...match, attribution: ATTRIBUTION_GEOGRAPHY };
       return {

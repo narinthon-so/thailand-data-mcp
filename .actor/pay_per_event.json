@@ -1,0 +1,16 @@
+[
+    {
+        "company-lookup": {
+            "eventTitle": "Company registry lookup",
+            "eventDescription": "One successful lookup of a Thai company in the official DBD registry (thai_company_lookup). Not charged when the registry is unavailable.",
+            "eventPriceUsd": 0.1
+        }
+    },
+    {
+        "address-normalize": {
+            "eventTitle": "Address normalization",
+            "eventDescription": "One Thai address parsed into the official administrative hierarchy (thai_address_normalize).",
+            "eventPriceUsd": 0.02
+        }
+    }
+]

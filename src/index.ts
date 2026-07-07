@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * thailand-data-mcp-server
+ * thailand-data-mcp-server — local entry point (no billing).
  *
- * MCP server exposing Thailand data tools for AI agents:
+ * Tools:
  *  - thai_company_lookup    — official DBD company registry (live, cached)
  *  - thai_address_normalize — free text → province/district/subdistrict/postcode
  *  - thai_list_provinces    — canonical province list
@@ -10,23 +10,10 @@
  *  - thai_vat_reference     — VAT / withholding tax basics
  *
  * Transport: stdio (default) or streamable HTTP (TRANSPORT=http, stateless).
+ * For the monetized Apify Standby entry point, see apify-main.ts.
  */
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { registerAddressTools } from "./tools/address.js";
-import { registerCompanyTools } from "./tools/company.js";
-import { registerReferenceTools } from "./tools/reference.js";
-
-function buildServer(): McpServer {
-  const server = new McpServer({
-    name: "thailand-data-mcp-server",
-    version: "0.1.0",
-  });
-  registerCompanyTools(server);
-  registerAddressTools(server);
-  registerReferenceTools(server);
-  return server;
-}
+import { buildServer } from "./server.js";
 
 async function runStdio(): Promise<void> {
   const server = buildServer();

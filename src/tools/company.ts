@@ -2,6 +2,7 @@ import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { ATTRIBUTION_DBD } from "../constants.js";
 import { DbdError, lookupJuristicPerson } from "../services/dbd.js";
+import type { ChargeFn } from "../server.js";
 
 const CompanyLookupInputSchema = z
   .object({
@@ -14,7 +15,7 @@ const CompanyLookupInputSchema = z
   })
   .strict();
 
-export function registerCompanyTools(server: McpServer): void {
+export function registerCompanyTools(server: McpServer, charge: ChargeFn): void {
   server.registerTool(
     "thai_company_lookup",
     {
@@ -62,6 +63,9 @@ Notes:
     async ({ juristic_id }) => {
       try {
         const { profile, fromCache } = await lookupJuristicPerson(juristic_id);
+        // Charge only after the registry answered (found or confirmed
+        // not-found) — upstream failures are not billed.
+        await charge("company-lookup");
         const output = {
           found: profile !== null,
           company: profile,

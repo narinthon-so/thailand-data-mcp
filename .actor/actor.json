@@ -1,0 +1,22 @@
+{
+    "$schema": "https://apify.com/schemas/v1/actor.ide.json",
+    "actorSpecification": 1,
+    "name": "thailand-data-mcp",
+    "title": "Thailand Data MCP Server",
+    "description": "MCP server for Thailand data: official DBD company registry lookup (KYB/due diligence), Thai address normalization, provinces, public holidays, and VAT/WHT reference.",
+    "version": "0.1",
+    "buildTag": "latest",
+    "usesStandbyMode": true,
+    "minMemoryMbytes": 256,
+    "maxMemoryMbytes": 1024,
+    "input": {
+        "title": "Actor input schema",
+        "description": "This MCP server runs in standby mode; it takes no run input.",
+        "type": "object",
+        "schemaVersion": 1,
+        "properties": {},
+        "required": []
+    },
+    "dockerfile": "../Dockerfile",
+    "webServerMcpPath": "/mcp"
+}
