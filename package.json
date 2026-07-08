@@ -1,8 +1,9 @@
 {
-  "name": "thailand-data-mcp-server",
-  "version": "0.1.0",
+  "name": "thailand-data-mcp",
+  "version": "0.1.2",
   "description": "MCP server for Thailand data: DBD company registry lookup, Thai address normalization, holidays, and VAT/WHT reference",
   "license": "MIT",
+  "mcpName": "io.github.narinthon-so/thailand-data-mcp",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/narinthon-so/thailand-data-mcp.git"
@@ -20,13 +21,19 @@
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "thailand-data-mcp-server": "dist/index.js"
+    "thailand-data-mcp": "dist/index.js"
   },
+  "files": [
+    "dist",
+    "data",
+    "NOTICE"
+  ],
   "scripts": {
     "start": "node dist/index.js",
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build"
   },
   "engines": {
     "node": ">=18"
