@@ -1,0 +1,19 @@
+Data notice for thailand-data-mcp
+=================================
+
+The MIT license in LICENSE covers the source code of this project.
+Bundled and fetched DATA carry their own terms:
+
+1. Geography data (data/provinces.json, data/districts.json,
+   data/subdistricts.json) derives from
+   thailand-geography-data/thailand-geography-json, used under the
+   MIT License.
+   https://github.com/thailand-geography-data/thailand-geography-json
+
+2. Live company-registry data is fetched at runtime from the
+   Department of Business Development (DBD), Thailand open data API
+   and is used under the DGA Open Government License v1.0, which
+   requires source attribution at all times. Every tool response
+   includes an "attribution" field — it must be preserved when the
+   data is displayed, stored, or passed on.
+   https://data.go.th/en/pages/dga-open-government-license
